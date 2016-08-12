@@ -5,7 +5,7 @@
 source 'https://rubygems.org'
 
 group :development, :test do
-  gem 'azure_mgmt_resources', '~>0.4.0'
-  gem 'azure_mgmt_key_vault', '~>0.4.0'
+  gem 'azure_mgmt_resources', '~>0.5.0'
+  gem 'azure_mgmt_key_vault', '~>0.5.0'
   gem 'dotenv',               '~>2.1'
 end

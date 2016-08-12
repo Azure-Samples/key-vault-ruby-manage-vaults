@@ -56,7 +56,7 @@ def run_example
   vault_param.properties = Azure::ARM::KeyVault::Models::VaultProperties.new.tap do |vault_prop|
     vault_prop.tenant_id = ENV['AZURE_TENANT_ID']
     vault_prop.sku = Azure::ARM::KeyVault::Models::Sku.new.tap do |s|
-      s.family = Azure::ARM::KeyVault::Models::SkuFamily::A
+      s.family = 'A'
       s.name = Azure::ARM::KeyVault::Models::SkuName::Standard
     end
 
@@ -89,11 +89,16 @@ def run_example
   # delete a vault
   #
   puts 'Delete a vault'
+  puts 'Press any key to continue...'
+  gets
   keyvault_client.vaults.delete(RESOURCE_GROUP_NAME, VAULT_NAME)
 
   #
   # delete resource group
   #
+  puts 'Vault has been deleted. Now delete resource group'
+  puts 'Press any key to continue...'
+  gets
   delete_resource_group(resource_client)
 end
 
@@ -112,12 +117,12 @@ def delete_resource_group(resource_client)
   resource_client.resource_groups.delete(RESOURCE_GROUP_NAME)
 end
 
-def print_item(group)
-  puts "\tName: #{group.name}"
-  puts "\tId: #{group.id}"
-  puts "\tLocation: #{group.location}"
-  puts "\tTags: #{group.tags}"
-  print_properties(group.properties)
+def print_item(item)
+  puts "\tName: #{item.name}"
+  puts "\tId: #{item.id}"
+  puts "\tLocation: #{item.location}"
+  puts "\tTags: #{item.tags}"
+  print_properties(item.properties) if item.respond_to?(:properties)
 end
 
 def print_properties(props)
