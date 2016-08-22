@@ -1,7 +1,7 @@
 ---
-services: 
+services: key-vault
 platforms: ruby
-author: 
+author: vishrutshah
 ---
 
 # Manage key vaults with Ruby
