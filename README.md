@@ -139,7 +139,7 @@ vault = keyvault_client.vaults.create_or_update(RESOURCE_GROUP_NAME, VAULT_NAME,
 ```
 
 <a id="list"></a>
-### LIst key vaults
+### List key vaults
 
 This code lists the first 5 key vaults.
 
